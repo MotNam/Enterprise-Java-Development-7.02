@@ -1,12 +1,15 @@
 
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-  <input type="text" name="name" placeholder="name"  [(ngModel)]="user.nameInput" #name="ngModel"/>
-
+  <input type="text" name="name" placeholder="name" required name [(ngModel)]="user.nameInput" #name="ngModel"/>
+  <p *ngIf="name.invalid && name.touched">Invalid name</p>
+  
   <input type="text" name="occupation" placeholder="occupation" [(ngModel)]="user.occupationInput" #occupation="ngModel"/>
-
+  
   <input type="email" name="email" placeholder="email" required email [(ngModel)]="user.emailInput" #email="ngModel" />
+  <p *ngIf="email.invalid && email.touched">invalid email</p>
 
   <input type="text" name="subject" placeholder="subject" required  [(ngModel)]="user.subjectInput" #subject="ngModel"/>
+  <p *ngIf="subject.invalid && subject.touched">Please enter a subject</p>
 
   <textarea
     name="content"
@@ -14,6 +17,7 @@
     required
     minlength="10"
     maxlength="255" [(ngModel)]="user.contentInput" #content="ngModel"></textarea>
+    <p *ngIf="content.invalid && content.touched">Please enter this field</p>
 
   <button [disabled]="form.invalid" type="submit">submit</button>
 </form>

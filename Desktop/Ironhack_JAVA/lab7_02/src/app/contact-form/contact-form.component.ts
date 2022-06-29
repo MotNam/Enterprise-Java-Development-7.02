@@ -18,6 +18,7 @@ export class ContactFormComponent implements OnInit {
   constructor() {
     
     this.user = new User('', '', '', '', '');
+    
    }
 
   ngOnInit(): void {
